@@ -23,7 +23,7 @@
   /* ── 設定 ── */
   const CHAT_CHANNEL  = 'ai_chai';
   const CLIP_CHANNEL  = 'ai_chai';
-  const CLIPS_API_URL = 'twitch-clips-api.mcray971.workers.dev'; // ← WorkerのURLに変更
+  const CLIPS_API_URL = 'https://twitch-clips-api.mcray971.workers.dev'; // ← WorkerのURLに変更
   const TRIGGER_PRIO  = '!clips';
   const TRIGGER_RAND  = '!clip';
   const VOLUME        = 1.0;
