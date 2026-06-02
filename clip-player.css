@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+  overflow: hidden;
+}
+
+.statusText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: white;
+  background-color: black;
+  padding: 4px 8px 4px 8px;
+  border-radius: 4px;
+}
+
+
+
+.checkout.hide, .statusText.hide, #timer.hide {
+  display: none;
+}
+
+.player-container {
+  width: 100%;
+  height: 100vh;           /* OBS用に高さを100%に */
+  overflow: hidden;
+  position: relative;
+  padding-top: 0 !important;   /* 16:9固定を解除 */
+}
+
+/* OBSブラウザソースでは必ず全域表示 */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+/* 動画を確実にコンテナいっぱいに */
+#player {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;        /* 必要に応じて contain にも変更可 */
+}
+
+.overlayText {
+  position: absolute;
+  bottom:1vw;
+  left:0;
+  color: white;
+  font-size: large;
+  background-color: rgba(0,0,255,0.3);
+  border-radius: 0 50px 50px 0px;
+  padding: 0vw 4vw 1vw 2vw;
+  max-width: 50%;
+  transition: transform 1s ease;
+  transform: translateX(0) skewY(-4deg);
+  -webkit-transform: translateX(0) skewY(-4deg);
+}
+
+.overlayText.hide {
+  transform: translateX(-100%) skewY(-4deg);
+  -webkit-transform: translateX(-100%) skewY(-4deg);
+}
+
+h1, p {
+  font-family: 'Poppins', 'sans-serif'
+}
+
+p {
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom:0.5vw;
+  font-weight:400;
+  font-size:2vw;
+}
+
+p.gameinfo {
+  margin-bottom:0;
+}
+
+p.clipnumber {
+  font-size:1vw;
+  margin-top:1vw;
+  margin-bottom:0;
+}
+
+h1 {
+  font-size:3vw;
+  margin-bottom: 0;
+  padding-bottom:0;
+  margin-top:0;
+  font-weight:700;
+}
+
+h1#checkout {
+  font-size: 3.5vw;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  background-color: rgba(0,0,255,0.3);
+  color: #FFF;
+  position: absolute;
+  top:0;
+}
+
+#timer {
+  position:absolute;
+  bottom:0;
+  right:0;
+  z-index:1000;
+  width:40px;
+  height:30px;
+  padding-top:12px;
+  background-color:rgba(0,0,0,0.5);
+  color:#fff;
+  margin:1vw;
+  border-radius: 50%;
+  font-family: 'Verdana';
+  text-align:center;
+}
+

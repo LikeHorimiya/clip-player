@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ai_chai clip player</title>
+  <link rel="stylesheet" href="./clip-player.css">
+  <meta name="robots" content="noindex,nofollow">
+  <style id="customizations"></style>
+</head>
+<body>
+  <div class="player-container">
+    <video id="player" playsinline
+      style="width:100%;height:100%;position:absolute;top:0;left:0;z-index:-1;"></video>
+    <div id="overlay" class="overlayText hide"></div>
+    <div id="timer" class="hide"></div>
+    <h1 id="status" class="statusText hide"></h1>
+  </div>
+  <script src="./fetchClipURL.js"></script>
+  <script src="./player-app.js"></script>
+</body>
+</html>
