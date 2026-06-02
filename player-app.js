@@ -23,7 +23,7 @@
   /* ── 設定 ── */
   const CHAT_CHANNEL  = 'ai_chai';
   const CLIP_CHANNEL  = 'ai_chai';
-  const CLIPS_API_URL = 'https://twitch-clips-api.mcray971.workers.dev'; // ← WorkerのURLに変更
+  const CLIPS_API_URL = 'https://twitch-clips-api.YOUR_SUBDOMAIN.workers.dev'; // ← WorkerのURLに変更
   const TRIGGER_PRIO  = '!clips';
   const TRIGGER_RAND  = '!clip';
   const VOLUME        = 1.0;
@@ -37,7 +37,20 @@
   let allClips    = [];
   let isPlaying   = false;
   let currentClip = null;    // 現在再生中のクリップ
-  const playedAt  = new Map(); // slug → クールダウン開始時刻(ms)
+  // クールダウン管理 - localStorageで永続化
+  const STORAGE_KEY = 'clip_cooldown';
+  function loadPlayedAt() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? new Map(Object.entries(JSON.parse(raw))) : new Map();
+    } catch { return new Map(); }
+  }
+  function savePlayedAt() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(Object.fromEntries(playedAt)));
+    } catch (e) { console.warn('[player] localStorage書き込み失敗:', e); }
+  }
+  const playedAt = loadPlayedAt();
 
   /* ── ユーティリティ ── */
   function hideStatus() {
@@ -57,6 +70,7 @@
   function recordPlayed(clip) {
     if (!clip) return;
     playedAt.set(clip.slug, Date.now());
+    savePlayedAt();
     console.log(`[player] クールダウン記録: ${clip.title}`);
   }
 
