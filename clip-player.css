@@ -2,6 +2,7 @@
 
 body {
   overflow: hidden;
+  background: transparent;
 }
 
 .statusText {
@@ -24,26 +25,11 @@ body {
 
 .player-container {
   width: 100%;
-  height: 100vh;           /* OBS用に高さを100%に */
-  overflow: hidden;
-  position: relative;
-  padding-top: 0 !important;   /* 16:9固定を解除 */
-}
-
-/* OBSブラウザソースでは必ず全域表示 */
-body, html {
-  margin: 0;
-  padding: 0;
   height: 100%;
-  overflow: hidden;
-  background: #000;
-}
-
-/* 動画を確実にコンテナいっぱいに */
-#player {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover;        /* 必要に応じて contain にも変更可 */
+  overflow:hidden;
+  padding-top: 56.25%;
+  height: 0px;
+  position: relative;  
 }
 
 .overlayText {
@@ -124,4 +110,3 @@ h1#checkout {
   font-family: 'Verdana';
   text-align:center;
 }
-
